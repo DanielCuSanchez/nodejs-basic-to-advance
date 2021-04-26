@@ -44,23 +44,25 @@ const getAlumno = (id, callback) => {
   return alumno ? callback(null, alumno) : callback(`Id ${id} not exist`, null);
 };
 //Esta funcion recibe un alumno y retorna las calificaciones que busca sobre el arreglo de calificaciones
-const getCalificacion = (alumno, callback) => {
+const getCalificacion = (id, callback) => {
   const calificacionesAlumno = calificaciones.find(
-    (calificacion) => alumno.id === calificacion.id
+    (calificacion) => id === calificacion.id
   );
-  return calificacionAlumno
+  return calificacionesAlumno
     ? callback(null, calificacionesAlumno)
     : callback(`calificacion alumno con ${id} not exist`, null);
 };
+
+const id = 3;
 //Primera llamada a una funcion
-getAlumno(1, (error, alumno) => {
+getAlumno(id, (error, alumno) => {
   if (error) {
     console.log(error);
     return;
   }
   console.log(alumno);
   //Segunda llamada a una funcion
-  getCalificacion(alumno, (error, { calificaciones }) => {
+  getCalificacion(id, (error, { calificaciones }) => {
     if (error) {
       console.log(error);
       return;
