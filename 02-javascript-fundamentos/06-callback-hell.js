@@ -1,3 +1,4 @@
+//Arreglo alumnos
 const alumnos = [
   {
     id: 1,
@@ -12,7 +13,7 @@ const alumnos = [
     nombre: "Andres Elias Ayub",
   },
 ];
-
+//Areglo calificaciones
 const calificaciones = [
   {
     id: 1,
@@ -37,11 +38,12 @@ const calificaciones = [
   },
 ];
 
+//Esta funcion recibe un ID de alumno y busca en el arreglo de alumnos
 const getAlumno = (id, callback) => {
   const alumno = alumnos.find((alumno) => alumno.id === id);
   return alumno ? callback(null, alumno) : callback(`Id ${id} not exist`, null);
 };
-
+//Esta funcion recibe un alumno y retorna las calificaciones que busca sobre el arreglo de calificaciones
 const getCalificacion = (alumno, callback) => {
   const calificacionesAlumno = calificaciones.find(
     (calificacion) => alumno.id === calificacion.id
@@ -50,13 +52,14 @@ const getCalificacion = (alumno, callback) => {
     ? callback(null, calificacionesAlumno)
     : callback(`calificacion alumno con ${id} not exist`, null);
 };
-
+//Primera llamada a una funcion
 getAlumno(1, (error, alumno) => {
   if (error) {
     console.log(error);
     return;
   }
   console.log(alumno);
+  //Segunda llamada a una funcion
   getCalificacion(alumno, (error, { calificaciones }) => {
     if (error) {
       console.log(error);
