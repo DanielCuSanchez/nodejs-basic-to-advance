@@ -1,22 +1,11 @@
-const { options } = require("yargs");
 const {
   crearTablaMultiplicacion,
-} = require("./app-tabla/helpers/multiplicarAsync");
-const yargs = require("yargs")
-  .option("b", {
-    alias: "base",
-    type: "number",
-    demandOption: true,
+} = require("./app-tabla/helpers/multiplicarPromesa");
+const { yargs } = require("./yargs/config.yargs");
+
+const { b, l, h } = yargs;
+crearTablaMultiplicacion(b, l, h)
+  .then((res) => {
+    console.log(res);
   })
-  .check((arv, options) => {
-    console.log(options);
-    if (isNaN(arv.b)) {
-      throw "La base tiene que ser un número";
-    }
-  }).argv;
-
-console.log(yargs);
-
-// crearTablaMultiplicacion(yargs.b)
-//   .then((tabla) => console.log(tabla))
-//   .catch((e) => console.log(e));
+  .catch((e) => console.log(e));
