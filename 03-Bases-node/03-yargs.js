@@ -9,6 +9,7 @@ const yargs = require("yargs")
     demandOption: true,
   })
   .check((arv, options) => {
+    console.log(options);
     if (isNaN(arv.b)) {
       throw "La base tiene que ser un número";
     }
