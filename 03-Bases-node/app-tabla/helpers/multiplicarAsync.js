@@ -8,7 +8,10 @@ const crearTablaMultiplicacion = async (base, listar, hasta) => {
   }
   let nombreArchivo = `tabla_${base}.txt`;
 
-  const err = await fs.writeFileSync(nombreArchivo, salidaParaGuardar);
+  const err = await fs.writeFileSync(
+    `tablasTXT/${nombreArchivo}`,
+    salidaParaGuardar
+  );
   if (err) {
     return err;
   } else {
